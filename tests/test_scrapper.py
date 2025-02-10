@@ -1,0 +1,1 @@
+from scrapper.ogs_html import NortheasternScraper
