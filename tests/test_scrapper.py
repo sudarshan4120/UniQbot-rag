@@ -1,3 +1,1 @@
-from scrapper.ogs_html import hellow
-
-hellow()
+from scrapper.ogs_html import NortheasternScraper
