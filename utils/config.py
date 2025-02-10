@@ -28,8 +28,8 @@ class Manager:
 
     def __init__(self, config_path: str = 'config.ini'):
 
-        utils_dir = os.path.dirname(__file__)
-        self.file = os.path.join(utils_dir, config_path)
+        self.utils_dir = os.path.dirname(__file__)
+        self.file = os.path.join(self.utils_dir, config_path)
         self.config_vars = {}
 
     def load_vars(self):
@@ -40,9 +40,11 @@ class Manager:
         config = configparser.ConfigParser()
         config.read(self.file)
 
+        self.__read_config_section(config, 'Settings')
         self.__read_config_section(config, 'Scrapper Settings')
 
         # Other custom Vars here - if any
+        os.environ['HOME_DIR'] = os.path.dirname(self.utils_dir)
 
     def reset_config(self):
 
@@ -63,8 +65,13 @@ class Manager:
     def __create_config_template(self):
 
         config = configparser.ConfigParser()
+
+        config['Settings'] = {
+            'rawdata_dir': 'data/raw/',
+        }
         config['Scrapper Settings'] = {
-            'sitemap': '',
+            'sitemap': 'https://international.northeastern.edu/ogs',
+            'workers': '30',
         }
 
         with open(self.file, 'w+') as configfile:
