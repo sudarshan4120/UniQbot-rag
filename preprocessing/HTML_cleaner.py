@@ -6,13 +6,13 @@ def clean_html(html_content):
     # Parse the HTML
     soup = BeautifulSoup(html_content, 'html.parser')
     
-    # Only keeping tags that have info
+    # Define tags to keep
     keep_tags = ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div']
     
     # Find all tags
     all_tags = soup.find_all()
     
-    # Iterate through tags in reverse to avoid incomplete parsing
+    # Iterate through tags in reverse to avoid problems when removing elements
     for tag in reversed(all_tags):
         # If tag is not in our keep list
         if tag.name not in keep_tags:
@@ -47,7 +47,7 @@ def clean_html(html_content):
 
 if __name__ == "__main__":
     # Directory containing HTML files
-    input_dir = 'streamlit/data/scraped_pages'
+    input_dir = 'data/scraped_pages'
     output_dir = 'data/cleaned_html'
     
     # Create output directory if it doesn't exist
@@ -72,3 +72,4 @@ if __name__ == "__main__":
             
             print(f"Cleaned {filename} successfully!")
     
+    print("All HTML files have been cleaned!")
