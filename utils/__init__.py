@@ -1,4 +1,4 @@
-from .config import Manager
+from utils.config import Manager
 import os
 
 def import_settings():
@@ -6,5 +6,4 @@ def import_settings():
     config_manager = Manager()
     config_manager.load_vars()
 
-if __name__ == "__main__":
-    import_settings()
+import_settings()
