@@ -1,5 +1,5 @@
 import os
-from extract import run_scraper
+#from extract import run_scraper
 from clean import process_cleaning
 from chunk_2 import process_files
 
