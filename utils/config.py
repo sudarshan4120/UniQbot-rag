@@ -73,6 +73,10 @@ class Manager:
             'rawdata_dir': 'data/raw/',
             'cleandata_dir': 'data/cleaned/',
             'chunkdata_dir': 'data/chunked/',
+            'anthropic_model': "claude-3-haiku-20240307",
+            'anthropic_api_key': '',
+            'openai_model': 'gpt-3.5-turbo',
+            'openai_api_key': '',
         }
         config['Scrapper Settings'] = {
             'sitemap': 'https://international.northeastern.edu/ogs',
