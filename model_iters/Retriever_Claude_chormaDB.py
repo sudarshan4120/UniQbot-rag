@@ -1,4 +1,5 @@
 import os
+import argparse
 
 if not os.getenv('ENV_STATUS') == '1':
     import utils  # This loads vars, do not remove
@@ -9,7 +10,6 @@ from llama_index.core import VectorStoreIndex
 from llama_index.core import StorageContext, load_index_from_storage
 from llama_index.core.memory import ChatMemoryBuffer
 from llama_index.llms.anthropic import Anthropic
-# Use the correct import for HuggingFace embeddings
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
 
@@ -43,6 +43,13 @@ def read_chunked_html(chunked_dir):
     return all_chunks
 
 
+def index_exists(index_name):
+    """
+    Check if an index already exists at the specified path.
+    """
+    return os.path.exists(index_name) and os.path.isdir(index_name) and len(os.listdir(index_name)) > 0
+
+
 def build_rag_index(chunks, index_name="my_rag_index"):
     """
     Builds a RAG index using LlamaIndex from the extracted chunks.
@@ -50,14 +57,14 @@ def build_rag_index(chunks, index_name="my_rag_index"):
     """
     # Initialize Claude LLM
     llm = Anthropic(
-        api_key="",
+        api_key=os.getenv("ANTHROPIC_API_KEY", ""),
         model="claude-3-haiku-20240307",
         temperature=0.2,
     )
 
     # Use HuggingFace embeddings with MPS acceleration
     embed_model = HuggingFaceEmbedding(
-        model_name="BAAI/bge-base-en",
+        model_name="BAAI/bge-small-en",
         device="mps",  # Use Metal Performance Shaders on Apple Silicon
         embed_batch_size=16  # Optimize batch size for MPS
     )
@@ -98,14 +105,14 @@ def create_chat_engine(index_name="my_rag_index"):
     """
     # Initialize Claude LLM
     llm = Anthropic(
-        api_key="",
+        api_key=os.getenv("ANTHROPIC_API_KEY", ""),
         model="claude-3-haiku-20240307",
         temperature=0.2,
     )
 
     # Use HuggingFace embeddings with MPS acceleration
     embed_model = HuggingFaceEmbedding(
-        model_name="BAAI/bge-base-en",
+        model_name="BAAI/bge-small-en",
         device="mps",  # Use Metal Performance Shaders on Apple Silicon
         embed_batch_size=16  # Optimize batch size for MPS
     )
@@ -123,7 +130,7 @@ def create_chat_engine(index_name="my_rag_index"):
 
     # Create chat engine with memory
     chat_engine = index.as_chat_engine(
-        chat_mode="condense_plus_context",
+        chat_mode="react",
         memory=memory,
         verbose=True,
     )
@@ -133,20 +140,33 @@ def create_chat_engine(index_name="my_rag_index"):
 
 # Example usage
 if __name__ == "__main__":
-    chunked_dir = '/Users/nmnsnghl/Work/Github/UniQbot-rag/data/chunked'
+    # Set up argument parsing
+    parser = argparse.ArgumentParser(description="RAG Chat System")
+    parser.add_argument("--rebuild", action="store_true", help="Force rebuild the index")
+    parser.add_argument("--index-name", default="my_rag_index", help="Name of the index directory")
+    parser.add_argument("--chunked-dir", default='/Users/nmnsnghl/Work/Github/UniQbot-rag/data/chunked',
+                        help="Directory containing chunked HTML files")
+    args = parser.parse_args()
 
-    # Read all chunks from the HTML files
-    print("Reading chunked HTML files...")
-    chunks = read_chunked_html(chunked_dir)
-    print(f"Found {len(chunks)} chunks across all files")
+    index_name = args.index_name
+    chunked_dir = args.chunked_dir
 
-    # Build the RAG index
-    print("Building RAG index with MPS acceleration...")
-    index = build_rag_index(chunks)
-    print("Index built successfully!")
+    # Check if we need to build/rebuild the index
+    if args.rebuild or not index_exists(index_name):
+        # Read all chunks from the HTML files
+        print("Reading chunked HTML files...")
+        chunks = read_chunked_html(chunked_dir)
+        print(f"Found {len(chunks)} chunks across all files")
+
+        # Build the RAG index
+        print("Building RAG index with MPS acceleration...")
+        index = build_rag_index(chunks, index_name=index_name)
+        print("Index built successfully!")
+    else:
+        print(f"Using existing index from {index_name}")
 
     # Create chat engine
-    chat_engine = create_chat_engine()
+    chat_engine = create_chat_engine(index_name=index_name)
 
     # Interactive chat loop
     print("\nRAG Chat System Ready! Type 'exit' to quit.")
@@ -155,5 +175,8 @@ if __name__ == "__main__":
         if user_input.lower() == 'exit':
             break
 
-        response = chat_engine.chat(user_input)
-        print(f"\nAssistant: {response.response}")
+        try:
+            response = chat_engine.chat(user_input)
+            print(f"\nAssistant: {response.response}")
+        except Exception as e:
+            print("ERROR: ", e)
