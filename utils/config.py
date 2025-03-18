@@ -46,6 +46,9 @@ class Manager:
         # Other custom Vars here - if any
         os.environ['HOME_DIR'] = os.path.dirname(self.utils_dir)
 
+        # status set for scripts to verify
+        os.environ['ENV_STATUS'] = '1'
+
     def reset_config(self):
 
         print("Resetting Configuration")
@@ -74,6 +77,7 @@ class Manager:
         config['Scrapper Settings'] = {
             'sitemap': 'https://international.northeastern.edu/ogs',
             'workers': '30',
+            'env_status': '0',
         }
 
         with open(self.file, 'w+') as configfile:

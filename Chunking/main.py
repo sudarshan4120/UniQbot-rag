@@ -1,4 +1,7 @@
 import os
+if not os.getenv('ENV_STATUS') == '1':
+    import utils  # This loads vars, do not remove
+
 from Chunking.clean import process_cleaning
 from Chunking.chunk_2 import process_files
 

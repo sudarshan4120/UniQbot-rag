@@ -1,4 +1,6 @@
-import utils  # This loads vars, do not remove
+import os
+if not os.getenv('ENV_STATUS') == '1':
+    import utils  # This loads vars, do not remove
 
 import requests, os, time, re
 from bs4 import BeautifulSoup
