@@ -1,7 +1,4 @@
 import os
-if not os.getenv('ENV_STATUS') == '1':
-    import utils  # This loads vars, do not remove
-
 from preprocessing.cleaning import process_cleaning
 from preprocessing.chunking import process_files
 
