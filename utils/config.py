@@ -68,6 +68,8 @@ class Manager:
 
         config['Settings'] = {
             'rawdata_dir': 'data/raw/',
+            'cleandata_dir': 'data/cleaned/',
+            'chunkdata_dir': 'data/chunked/',
         }
         config['Scrapper Settings'] = {
             'sitemap': 'https://international.northeastern.edu/ogs',
