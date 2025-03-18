@@ -4,3 +4,5 @@ beautifulsoup4==4.13.3
 pytest==8.3.4
 anthropic
 openai
+nltk
+llama-index
