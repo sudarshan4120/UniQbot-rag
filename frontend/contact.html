@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chatbot Demo - Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/api/placeholder/200/80" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="faqs.html">FAQs</a></li>
+                <li><a href="f1-students.html">F1-Students</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>Contact Us</h1>
+            <p>We're here to help. Reach out to us with any questions or concerns.</p>
+        </section>
+
+        <section class="contact-content">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <div class="contact-detail">
+                    <strong>Email:</strong>
+                    <p>info@ragchatbotdemo.com</p>
+                </div>
+                <div class="contact-detail">
+                    <strong>Phone:</strong>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+                <div class="contact-detail">
+                    <strong>Address:</strong>
+                    <p>
+                        123 AI Innovation Street<br>
+                        Tech Valley, CA 94043<br>
+                        United States
+                    </p>
+                </div>
+                <div class="contact-detail">
+                    <strong>Hours:</strong>
+                    <p>
+                        Monday - Friday: 9am - 5pm PST<br>
+                        Saturday - Sunday: Closed
+                    </p>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2>Send us a Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+        
+        <section class="map-section">
+            <h2>Our Location</h2>
+            <div class="map-container">
+                <img src="/api/placeholder/800/400" alt="Map Location">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 RAG Chatbot Demo. All rights reserved.</p>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" class="chatbot-collapsed">
+        <div class="chatbot-header">
+            <span>Chat with our AI</span>
+            <button id="chatbot-toggle">
+                <span class="open-icon">▲</span>
+                <span class="close-icon">▼</span>
+            </button>
+        </div>
+        <div class="chatbot-body">
+            <div id="chatbot-messages"></div>
+            <div class="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="Ask a question...">
+                <button id="chatbot-send">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

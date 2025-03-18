@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chatbot Demo - FAQs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/api/placeholder/200/80" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="faqs.html" class="active">FAQs</a></li>
+                <li><a href="f1-students.html">F1-Students</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions. If you don't see what you're looking for, try asking our chatbot!</p>
+        </section>
+
+        <section class="faq-content">
+            <div class="faq-item">
+                <h2>What is a RAG chatbot?</h2>
+                <p>RAG stands for Retrieval-Augmented Generation. It's a technique that combines information retrieval with text generation to create AI chatbots that can answer questions based on specific documents or websites.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h2>How does the chatbot know about your website content?</h2>
+                <p>Our chatbot uses web scraping to gather content from our website pages. This content is processed and indexed, allowing the chatbot to retrieve relevant information when answering your questions.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h2>Is my conversation with the chatbot private?</h2>
+                <p>Yes, conversations with our chatbot are private and not stored beyond the current session. We value your privacy and do not use your questions for training purposes.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h2>Can the chatbot answer questions about anything?</h2>
+                <p>No, our chatbot is designed to answer questions specifically about the information contained on our website. It doesn't have knowledge about topics outside this scope.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h2>What if the chatbot gives incorrect information?</h2>
+                <p>While we strive for accuracy, AI systems aren't perfect. If you receive information that seems incorrect, please verify it through our official documentation or contact us directly.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 RAG Chatbot Demo. All rights reserved.</p>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" class="chatbot-collapsed">
+        <div class="chatbot-header">
+            <span>Chat with our AI</span>
+            <button id="chatbot-toggle">
+                <span class="open-icon">▲</span>
+                <span class="close-icon">▼</span>
+            </button>
+        </div>
+        <div class="chatbot-body">
+            <div id="chatbot-messages"></div>
+            <div class="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="Ask a question...">
+                <button id="chatbot-send">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

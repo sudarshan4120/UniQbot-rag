@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chatbot Demo - F1 Students</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/api/placeholder/200/80" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="faqs.html">FAQs</a></li>
+                <li><a href="f1-students.html" class="active">F1-Students</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>F1 Student Resources</h1>
+            <p>Important information and resources for international students on F1 visas.</p>
+        </section>
+
+        <section class="student-resources">
+            <div class="resource-card">
+                <img src="/api/placeholder/400/250" alt="F1 Visa Process">
+                <h2>F1 Visa Process</h2>
+                <p>The F1 visa is a non-immigrant visa that allows foreign students to pursue education in the United States. The application process involves several steps including:</p>
+                <ul>
+                    <li>Obtaining an I-20 form from your school</li>
+                    <li>Paying the SEVIS fee</li>
+                    <li>Completing the DS-160 form</li>
+                    <li>Scheduling and attending a visa interview</li>
+                </ul>
+            </div>
+            
+            <div class="resource-card">
+                <img src="/api/placeholder/400/250" alt="Maintaining Status">
+                <h2>Maintaining F1 Status</h2>
+                <p>To maintain your F1 status, you must:</p>
+                <ul>
+                    <li>Maintain a full course load (typically 12 credit hours for undergraduates)</li>
+                    <li>Make normal progress toward completing your program</li>
+                    <li>Maintain a valid I-20</li>
+                    <li>Not work off-campus without authorization</li>
+                    <li>Report any address changes to your DSO within 10 days</li>
+                </ul>
+            </div>
+            
+            <div class="resource-card">
+                <img src="/api/placeholder/400/250" alt="OPT and CPT">
+                <h2>OPT and CPT</h2>
+                <p>Optional Practical Training (OPT) and Curricular Practical Training (CPT) are employment authorizations for F1 students:</p>
+                <ul>
+                    <li>CPT: Work experience that is an integral part of your curriculum</li>
+                    <li>OPT: Temporary employment directly related to your major area of study</li>
+                    <li>Post-completion OPT: Up to 12 months of OPT after completing your degree</li>
+                    <li>STEM Extension: Additional 24 months for eligible STEM degree holders</li>
+                </ul>
+            </div>
+            
+            <div class="resource-card">
+                <img src="/api/placeholder/400/250" alt="Travel Information">
+                <h2>Travel Information</h2>
+                <p>When traveling outside the U.S. as an F1 student, you need:</p>
+                <ul>
+                    <li>A valid passport (valid for at least 6 months in the future)</li>
+                    <li>A valid F1 visa</li>
+                    <li>A current I-20 signed for travel by your DSO within the last year</li>
+                    <li>Proof of financial support and enrollment</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 RAG Chatbot Demo. All rights reserved.</p>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" class="chatbot-collapsed">
+        <div class="chatbot-header">
+            <span>Chat with our AI</span>
+            <button id="chatbot-toggle">
+                <span class="open-icon">▲</span>
+                <span class="close-icon">▼</span>
+            </button>
+        </div>
+        <div class="chatbot-body">
+            <div id="chatbot-messages"></div>
+            <div class="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="Ask a question...">
+                <button id="chatbot-send">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

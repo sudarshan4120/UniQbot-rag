@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEU OGS - HuskyBot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Office Of Global Services @ NEU</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="faqs.html">FAQs</a></li>
+                <li><a href="f1-students.html">F1-Students</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Welcome to Office of International Services</h1>
+            <p>Explore services and resources offered for Northeastern University.</p>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <img src="https://international.northeastern.edu/ogs/wp-content/uploads/sites/2/2020/03/DSC_3562-copy-750x0-c-default.jpg" alt="Feature 1">
+                <h2>Quick Assistance</h2>
+                <p>Our AI-powered chatbot can answer questions based on our website content.</p>
+                <a href="faqs.html" class="btn">Learn More</a>
+            </div>
+            <div class="feature-card">
+                <img src="https://international.northeastern.edu/ogs/wp-content/uploads/sites/2/2020/03/112717_MM_Camus_Feature_006A-750x0-c-default.jpg" alt="Feature 2">
+                <h2>Student Resources</h2>
+                <p>Helpful information for international students on F1 visas.</p>
+                <a href="f1-students.html" class="btn">View Resources</a>
+            </div>
+            <div class="feature-card">
+                <img src="https://international.northeastern.edu/ogs/wp-content/uploads/sites/2/2020/03/DSC_2371-copy-750x0-c-default.jpg" alt="Feature 3">
+                <h2>Get in Touch</h2>
+                <p>Have questions? Reach out to our team for personalized assistance.</p>
+                <a href="contact.html" class="btn">Contact Us</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; UniQ-Bot DS5500</p>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" class="chatbot-collapsed">
+        <div class="chatbot-header">
+            <span>Chat with our husky 🐺</span>
+            <button id="chatbot-toggle">
+                <span class="open-icon">▲</span>
+                <span class="close-icon">▼</span>
+            </button>
+        </div>
+        <div class="chatbot-body">
+            <div id="chatbot-messages"></div>
+            <div class="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="Ask a question...">
+                <button id="chatbot-send">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
