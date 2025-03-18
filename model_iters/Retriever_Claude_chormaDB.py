@@ -1,6 +1,7 @@
 import os
 import argparse
 
+os.environ['TOKENIZERS_PARALLELISM'] = 'false'
 if not os.getenv('ENV_STATUS') == '1':
     import utils  # This loads vars, do not remove
 
@@ -128,11 +129,29 @@ def create_chat_engine(index_name="my_rag_index"):
     # Create memory buffer for chat history
     memory = ChatMemoryBuffer.from_defaults(token_limit=1500)
 
+    # Define system prompt for Northeastern OGS
+    system_prompt = """
+        You are Northeastern University's Office of Global Services (OGS) assistant.
+
+    IMPORTANT INSTRUCTIONS:
+    1. Only answer questions about US immigration for Northeastern students and scholars
+    2. Keep all responses brief and direct
+    3. Never say "based on the context provided" or mention context in responses
+    4. If a question is not about immigration or Northeastern, briefly decline to answer
+    5. Use official information only, avoid speculative or unofficial advice
+    6. For unclear questions, provide only immigration-related information
+    7. When uncertain, recommend contacting OGS directly at +1-617-373-2310 or visiting 354 Richards Hall
+
+    Introduction format: "I'm Northeastern's OGS assistant. I can help with immigration questions for Northeastern students."
+    """
+
     # Create chat engine with memory
     chat_engine = index.as_chat_engine(
-        chat_mode="react",
+        chat_mode="context",
+        similarity_top_k=10,
         memory=memory,
         verbose=True,
+        system_prompt=system_prompt,
     )
 
     return chat_engine
