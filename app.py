@@ -1,12 +1,12 @@
 import utils  # This loads vars, do not remove
 
 import scrapper
-import Chunking
+import preprocessing
 
 
 def run():
     scrapper.run_scrapper()
-    Chunking.run_cleaner()
+    preprocessing.run_cleaner()
 
 
 if __name__ == "__main__":
