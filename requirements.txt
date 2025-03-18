@@ -6,3 +6,7 @@ anthropic
 openai
 nltk
 llama-index
+llama-index-core
+llama-index-llms-anthropic
+llama-index-embeddings-huggingface
+sentence-transformers

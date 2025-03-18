@@ -2,6 +2,7 @@ import os
 import re
 from bs4 import BeautifulSoup
 
+
 def clean_html(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
     keep_tags = ['a', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div']
@@ -23,6 +24,7 @@ def clean_html(html_content):
     cleaned_html = re.sub(r'\s+', ' ', str(soup))
     return re.sub(r'>\s+<', '><', cleaned_html)
 
+
 def process_cleaning(input_dir, output_dir):
     os.makedirs(output_dir, exist_ok=True)
 
@@ -40,8 +42,3 @@ def process_cleaning(input_dir, output_dir):
                 file.write(cleaned_html)
 
             print(f"Cleaned {filename} successfully!")
-
-if __name__ == "__main__":
-    input_dir = '/Users/shreya/Desktop/UniQbot/scraped_pages'
-    output_dir = '/Users/shreya/Desktop/Project1/Data/Cleaned'
-    process_cleaning(input_dir, output_dir)
