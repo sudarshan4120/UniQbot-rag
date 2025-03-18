@@ -53,7 +53,7 @@ def build_rag_index(chunks, index_name="my_rag_index"):
     # Initialize Claude LLM
     llm = Anthropic(
         api_key=os.getenv("ANTHROPIC_API_KEY", ""),
-        model="claude-3-haiku-20240307",
+        model=os.getenv("ANTHROPIC_MODEL"),
         temperature=0.2,
     )
 
