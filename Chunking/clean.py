@@ -42,9 +42,3 @@ def process_cleaning(input_dir, output_dir):
                 file.write(cleaned_html)
 
             print(f"Cleaned {filename} successfully!")
-
-
-if __name__ == "__main__":
-    input_dir = '/Users/shreya/Desktop/UniQbot/scraped_pages'
-    output_dir = '/Users/shreya/Desktop/Project1/Data/Cleaned'
-    process_cleaning(input_dir, output_dir)

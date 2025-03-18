@@ -74,9 +74,3 @@ def process_files(input_dir, output_dir):
             print(f"Chunked {filename} successfully!")
 
     print("All cleaned HTML files have been chunked!")
-
-
-if __name__ == "__main__":
-    input_dir = '/Users/shreya/Desktop/Project1/Data/Cleaned'  # Path for cleaned HTML files
-    output_dir = '/Users/shreya/Desktop/Project1/Data/Chunked'  # Path for storing chunked HTML files
-    process_files(input_dir, output_dir)
