@@ -1,6 +1,5 @@
 # RAG Chatbot for Northeastern OGS
 
-## Project Description
 UniQbot is an AI-powered chatbot designed to enhance document Q&A capabilities for Northeastern University's Office of Global Services (OGS). The system leverages Retrieval-Augmented Generation (RAG) to provide instant, reliable answers to student queries, reducing dependency on office hours and improving overall accessibility to OGS services.
 
 > WORK IN PROGRESS
